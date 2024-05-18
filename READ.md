@@ -61,15 +61,16 @@ python predict.py <image_path> <psf_path> <output_path> <model_y_weights_path> <
 Modify the paths of the `config_deep_image_prior.py` file with the paths of the directories where the working data resides (`.mat`, `.npy`, `.png`).
 
 **Description of the Paths**
-    - `ORIGINAL_PNGs_PATH`: Directory containing the original images in PNG format.
-    - `TRAIN_PNGs_PATH`: Directory with the degraded images used for training.
-    - `TRAIN_NPYs_PATH`: Directory with the numpy (.npy) files for training.
-    - `TRAIN_NPYs_PSFs_PATH`: Directory with the PSF (.npy) files for training.
-    - `PREDICTS_PNGs_PATH`: Directory with the degraded images to be restored.
-    - `PREDICTS_PSFs_MATs_PATH`: Directory with the PSF (.mat) files for restoration.
-    - `PREDICTS_PSFS_PNGs_PATH`: Directory with the PSF (.png) files for restoration.
-    - `W_Y_PATH`: Path of the weights of the y model
-    - `W_COLOR_PATH`: Path of the weights of the cbcr model
+
+- `ORIGINAL_PNGs_PATH`: Directory containing the original images in PNG format.
+- `TRAIN_PNGs_PATH`: Directory with the degraded images used for training.
+- `TRAIN_NPYs_PATH`: Directory with the numpy (.npy) files for training.
+- `TRAIN_NPYs_PSFs_PATH`: Directory with the PSF (.npy) files for training.
+- `PREDICTS_PNGs_PATH`: Directory with the degraded images to be restored.
+- `PREDICTS_PSFs_MATs_PATH`: Directory with the PSF (.mat) files for restoration.
+- `PREDICTS_PSFS_PNGs_PATH`: Directory with the PSF (.png) files for restoration.
+- `W_Y_PATH`: Path to the weights of the y model.
+- `W_COLOR_PATH`: Path to the weights of the cbcr model.
 
 ### Train and test
 To use the model, just run the `deep_image_prior.py` script. Once the execution is finished, a directory `DEEP_IMAGE_PRIOR` will be created, where you will be able to see:
