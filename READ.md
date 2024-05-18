@@ -1,5 +1,5 @@
 # Introduction
-This is the repo for the deep learning image restoration model proposed in S. López-Tapia, J. Mateos, R. Molina and A. K. Katsaggelos, "Deep robust image restoration using the Moore-Penrose blur inverse", IEEE Internaational Conference on Image Processing (ICIP), 2023.
+Este repositorio es una extensión del repositorio original [CHSG-DDNET](https://github.com/vipgugr/CHSG-DDNet) donde se incluyen métodos para restaurar y mejorar imágenes utilizando DIP (Deep Image Prior).
 
 # Requirements
 * Python >= 3.8
@@ -24,10 +24,12 @@ First, activate conda environment:
 conda activate ddnet
 ```
 
-## Data preparation training
+## NO_DIP model
+
+### Data preparation training
 Download dataset from this [link](https://drive.google.com/drive/folders/109VwKx-GI_MbqIdAfGp6WJ0ekpA1N9_T?usp=sharing) and extract it. Modify `TRAIN_FILE_PATH` and `EVAL_FILE_PATH` in config.py to the paths of the train data folder and the validation data folder.
 
-## Train
+### Train
 Our systems uses two models:
 1. Luminance model or "y model". Script: train_y.py
 2. Color model or "cbcr model".  Script: train_cbcr.py
@@ -39,7 +41,7 @@ python train_y.py
 python train_cbcr.py
 ```
 
-## Val/Test
+### Val/Test
 To process a folder and generate the restores images of its contents, use predict.py.
 You will need to download our weights from [here](https://drive.google.com/drive/folders/109VwKx-GI_MbqIdAfGp6WJ0ekpA1N9_T?usp=sharing) or provide your own using the training scripts.
 
@@ -53,13 +55,17 @@ python predict.py <image_path> <psf_path> <output_path> <model_y_weights_path> <
 * <model_y_weights_path>: Path to the weights of model y.
 * <model_cbcr_weights_path>: Path to the weights of model cbcr.
 
+## DIP model
 
-# Citation
-```
-@inproceedings{Lopez2023BID,
-  title={Deep robust image restoration using the Moore-Penrose blur inverse},
-  author={Santiago L\'opez-Tapia and Javier Mateos and Rafael Molina and Aggelos K. Katsaggelos},
-  booktitle={IEEE Internaational Conference on Image Processing (ICIP)},
-  year={2023}
-}
-```
+### Data preparation training
+Modificar los paths del archivo `config_deep_image_prior.py` con las rutas de los directorios donde residen los datos de trabajo (`.mat`, `.npy`, `.png`)
+**Descripción de los Paths**
+    - `ORIGINAL_PNGs_PATH`: Directory containing the original images in PNG format.
+    - `TRAIN_PNGs_PATH`: Directory with the degraded images used for training.
+    - `TRAIN_NPYs_PATH`: Directory with the numpy (.npy) files for training.
+    - `TRAIN_NPYs_PSFs_PATH`: Directory with the PSF (.npy) files for training.
+    - `PREDICTS_PNGs_PATH`: Directory with the degraded images to be restored.
+    - `PREDICTS_PSFs_MATs_PATH`: Directory with the PSF (.mat) files for restoration.
+    - `PREDICTS_PSFS_PNGs_PATH`: Directory with the PSF (.png) files for restoration.
+    - `W_Y_PATH`: Path of the weights of the y model
+    - `W_COLOR_PATH`: Path of the weights of the cbcr model
