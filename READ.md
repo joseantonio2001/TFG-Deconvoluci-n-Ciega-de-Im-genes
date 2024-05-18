@@ -59,7 +59,8 @@ python predict.py <image_path> <psf_path> <output_path> <model_y_weights_path> <
 
 ### Data preparation training
 Modificar los paths del archivo `config_deep_image_prior.py` con las rutas de los directorios donde residen los datos de trabajo (`.mat`, `.npy`, `.png`)
-**Descripción de los Paths**
+
+#### Descripción de los Paths
     - `ORIGINAL_PNGs_PATH`: Directory containing the original images in PNG format.
     - `TRAIN_PNGs_PATH`: Directory with the degraded images used for training.
     - `TRAIN_NPYs_PATH`: Directory with the numpy (.npy) files for training.
