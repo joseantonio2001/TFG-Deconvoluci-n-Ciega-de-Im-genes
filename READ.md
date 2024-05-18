@@ -1,5 +1,5 @@
 # Introduction
-Este repositorio es una extensión del repositorio original [CHSG-DDNET](https://github.com/vipgugr/CHSG-DDNet) donde se incluyen métodos para restaurar y mejorar imágenes utilizando DIP (Deep Image Prior).
+This repository is an extension of the original repository [CHSG-DDNET](https://github.com/vipgugr/CHSG-DDNet) where methods for restoring and enhancing images using DIP (Deep Image Prior) are included.
 
 # Requirements
 * Python >= 3.8
@@ -58,9 +58,8 @@ python predict.py <image_path> <psf_path> <output_path> <model_y_weights_path> <
 ## DIP model
 
 ### Data preparation training
-Modificar los paths del archivo `config_deep_image_prior.py` con las rutas de los directorios donde residen los datos de trabajo (`.mat`, `.npy`, `.png`)
-
-#### Descripción de los Paths
+Modify the paths of the `config_deep_image_prior.py` file with the paths of the directories where the working data resides (`.mat`, `.npy`, `.png`).
+**Descripción de los Paths**
     - `ORIGINAL_PNGs_PATH`: Directory containing the original images in PNG format.
     - `TRAIN_PNGs_PATH`: Directory with the degraded images used for training.
     - `TRAIN_NPYs_PATH`: Directory with the numpy (.npy) files for training.
@@ -70,3 +69,12 @@ Modificar los paths del archivo `config_deep_image_prior.py` con las rutas de lo
     - `PREDICTS_PSFS_PNGs_PATH`: Directory with the PSF (.png) files for restoration.
     - `W_Y_PATH`: Path of the weights of the y model
     - `W_COLOR_PATH`: Path of the weights of the cbcr model
+
+### Train and test
+To use the model, just run the `deep_image_prior.py` script. Once the execution is finished, a directory `DEEP_IMAGE_PRIOR` will be created, where you will be able to see:
+1. The restored images with the base model in the `DEEP_IMAGE_PRIOR/RESTORE_DATA/NO_DIP/` directory.
+2. The images restored with the Deep Image Prior model in the directory `DEEP_IMAGE_PRIOR/RESTORE_DATA/DIP/`.
+3. The calculated metrics in the file `DEEP_IMAGE_PRIOR/METRICS.csv`.
+4. The updated weights used to restore images using Deep Image Prior in the `DEEP_IMAGE_PRIOR/UPDATE_WEIGHTS` directory.
+5. All data used to train and restore organised in the `DEEP_IMAGE_PRIOR/TEST_DATA` directory.
+
